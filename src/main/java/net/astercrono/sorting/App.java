@@ -3,7 +3,7 @@ package net.astercrono.sorting;
 import java.util.Random;
 
 public class App {
-	private static final int MAX_NUMBER = 700;
+	private static final int MAX_NUMBER = 300;
 	private HistoricalSort sort;
 	
 	public static void main(final String[] args) {
@@ -24,6 +24,7 @@ public class App {
 	
 	private void render(final SortHistory history) {
 		final SortRenderer renderer = new SortRenderer(history);
+		renderer.setScale(3);
 		renderer.render();
 	}
 	

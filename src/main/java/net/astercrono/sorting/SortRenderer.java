@@ -11,15 +11,17 @@ import net.astercrono.colorgrid.ColorGrid;
 import net.astercrono.colorgrid.ColorGridDimensions;
 
 public class SortRenderer {
-	private static final int width = 700;
-	private static final int height = 700;
 	private SortHistory history;
+	private int scale = 1;
 
 	public SortRenderer(final SortHistory history) {
 		this.history = history;
 	}
 
 	public void render() {
+		int width = calculateWidth();
+		int height = calculateHeight();
+
 		final ColorGridDimensions dimensions = new ColorGridDimensions();
 		dimensions.setRows(history.getNumberOfIterations());
 		dimensions.setColumns(history.getIterationLength());
@@ -37,17 +39,24 @@ public class SortRenderer {
 		renderHistory(history, grid);
 	}
 
+	public void setScale(int scale) {
+		if (scale > 1) {
+			this.scale = scale;
+		}
+	}
+
 	private void renderHistory(final SortHistory history, final ColorGrid grid) {
 		final List<Color> referenceColors = generateColors();
-		
+
 		history.forEachIteration((SortIteration iteration) -> {
 			renderIteration(iteration, grid, referenceColors);
 		});
-		
+
 		grid.repaint();
 	}
 
-	private void renderIteration(final SortIteration iteration, final ColorGrid grid, final List<Color> referenceColors) {
+	private void renderIteration(final SortIteration iteration, final ColorGrid grid,
+			final List<Color> referenceColors) {
 		final Color[] iterationColors = buildIterationColors(iteration, referenceColors);
 		grid.setRowColors(iteration.getIterationNumber(), iterationColors);
 	}
@@ -56,17 +65,25 @@ public class SortRenderer {
 		ColorGeneration colorGeneration = new ColorGeneration();
 		return colorGeneration.generate(history.getIterationLength());
 	}
-	
+
 	private Color[] buildIterationColors(final SortIteration iteration, final List<Color> referenceColors) {
 		final Color[] colors = new Color[referenceColors.size()];
 		final Integer[] values = iteration.getValues();
-		
+
 		int i = 0;
 		for (final Integer v : values) {
 			colors[i] = referenceColors.get(v);
 			i++;
 		}
-		
+
 		return colors;
+	}
+
+	private int calculateWidth() {
+		return (int) (history.getIterationLength() * scale);
+	}
+
+	private int calculateHeight() {
+		return (int) (history.getNumberOfIterations() * scale);
 	}
 }
