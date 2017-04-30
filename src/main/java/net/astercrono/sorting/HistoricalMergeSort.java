@@ -5,13 +5,9 @@ public class HistoricalMergeSort implements HistoricalSort {
 	@Override
 	public SortHistory sort(final Integer[] values) {
 		final SortHistory history = new SortHistory();
+		addToHistory(values, history);
 
-		if (values.length == 0) {
-			return history;
-		}
-
-		if (values.length == 1) {
-			history.addIteration(new SortIteration(values));
+		if (values.length <= 1) {
 			return history;
 		}
 

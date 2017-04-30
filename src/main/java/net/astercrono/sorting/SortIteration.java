@@ -12,6 +12,16 @@ public class SortIteration {
 		return values;
 	}
 	
+	public int getValueCount() {
+		int count = 0;
+		
+		if (values != null) {
+			count = values.length;
+		}
+		
+		return count;
+	}
+	
 	public void setIterationNumber(final int number) {
 		this.iterationNumber = number;
 	}
