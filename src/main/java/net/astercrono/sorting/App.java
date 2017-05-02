@@ -7,7 +7,7 @@ public class App {
 	private HistoricalSort sort;
 	
 	public static void main(final String[] args) {
-		final HistoricalSort sort = new HistoricalMergeSort();
+		final HistoricalSort sort = new HistoricalQuickSort();
 		final App app = new App(sort);
 		app.run();
 	}
