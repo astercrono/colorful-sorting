@@ -22,6 +22,10 @@ public class SortHistory {
 		return length;
 	}
 	
+	public Integer[] getSortedList() {
+		return iterations.get(iterations.size() - 1).getValues();
+	}
+	
 	public int getNumberOfIterations() {
 		return iterations.size();
 	}
