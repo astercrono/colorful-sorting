@@ -6,9 +6,8 @@ A sorted list is represented by smooth transitions across the visible color spec
 
 **Quicksort**
 
-![Screenshot](quicksort.png)
-
+<img src='quicksort.png' width='400' alt='' />
 
 **Merge Sort**
 
-![Screenshot](mergesort.png)
+<img src='mergesort.png' width='400' alt='' />
