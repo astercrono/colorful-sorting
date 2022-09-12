@@ -1,0 +1,14 @@
+image: debian/stable
+packages:
+  - openjdk-11-jdk
+  - maven
+sources:
+  - https://git.sr.ht/~astercrono/java-color-generator
+  - https://git.sr.ht/~astercrono/colorful-sorting
+tasks:
+  - dependency: |
+      cd java-color-generator
+      mvn install
+  - build: |
+      cd colorful-sorting
+      mvn package
