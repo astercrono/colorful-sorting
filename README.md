@@ -1,4 +1,4 @@
-**Overview**
+# Overview
 
 Colorful perspectives of sorting algorithms. 
 
